@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="utf-8">
 	<title></title>
 </head>
 <body>
@@ -10,18 +11,71 @@
 			<li v-for="personne in personnes">{{personne}}</li>
 		</ul>
 		{{message}}
+		<input type="text" v-model="message2">
+		{{message2}}
+
+		<input type="checkbox" v-model="success">
 		<a :href="link" :title="message">{{message}}</a>
-		<a href="#" v-on:click="change">changer</a>
+
+		<a href="#" v-on:click="change">changer</a> <!--a href="#" @click="change">changer</a-->
 		<div v-if="success" style="color: green">
 			afficher
 		</div>
 		<div v-else="success" style="color: red">
 			Echec
-		</div>
+		</div><br/><br/><br/><br/>
+
+
 	</div>
 
 
 
+	<div id="app-2">
+  <span v-bind:title="message">
+    Passez votre souris sur moi pendant quelques secondes
+    pour voir mon titre lié dynamiquement !
+  </span>
+</div>
+<br/><br/><br/><br/>
+
+
+<div id="app-4">
+  <ol>
+    <li v-for="todo in todos">
+      {{ todo.text }}
+    </li>
+  </ol>
+</div>
+
+
+<br/><br/><br/><br/>
+
+<div id="app-5">
+  <p>{{ message }}</p>
+  <button v-on:click="reverseMessage">Message retourné</button>
+</div>
+
+
+<br/><br/><br/><br/>
+<h2>Component</h2>
+
+<div id="app-7">
+  <ol>
+    <!--
+      Maintenant nous fournissons à chaque todo-item l'objet todo
+      qu'il représente de manière à ce que son contenu puisse être dynamique.
+      Nous avons également besoin de fournir à chaque composant une « clé »,
+      mais nous expliquerons cela plus tard.
+    -->
+    <todo-item
+      v-for="item in groceryList"
+      v-bind:todo="item"
+      v-bind:key="item.id"
+    >
+    	
+    </todo-item>
+  </ol>
+</div>
 
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js"></script>
 	<script type="text/javascript" src="app.js"></script>
